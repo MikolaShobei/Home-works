@@ -42,14 +42,14 @@
 // // - створити функцію яка приймає три числа та виводить та повертає найбільше.
 
 // function max(a, b, c) {
-    // let m = [a, b, c];
+//     let m = [a, b, c];
     
-    // let chislo = a;
-    // for(let i = 1; i < m.length; i++){
-    //     m[i] > chislo ? chislo = m[i]: chislo = chislo;
-    // }
-    // console.log(chislo)
-    // return chislo;
+//     let chislo = a;
+//     for(let i = 1; i < m.length; i++){
+//         m[i] > chislo ? chislo = m[i]: chislo = chislo;
+//     }
+//     console.log(chislo)
+//     return chislo;
 // }
 // max(22, 5, 54)
 
@@ -88,7 +88,6 @@
 // let m = [25, 87, 65, 022, 798];
 
 // function max() {
-//     let m = [25, 87, 65, 022, 798];
     
 //     let chislo = m[0];
 //     for(let i = 1; i < m.length; i++){
@@ -97,7 +96,7 @@
 //     console.log(chislo)
 //     return chislo;
 // }
-// max()
+// max(m)
 
 
 
@@ -112,8 +111,8 @@
 
 
 
+// let m = [25, 87, 65, 1, 22, 798];
 // function min() {
-//     let m = [25, 87, 65, 1, 22, 798];
 //     let chislo = m[0];
 //     for(let i = 1; i < m.length; i++){
 //         m[i] > chislo ? chislo = chislo: chislo = m[i];
@@ -121,7 +120,7 @@
 //     console.log(chislo)
 //     return chislo;
 // }
-// min()
+// min(m)
 
 
 
@@ -221,14 +220,15 @@
 //   [3,5,7,9]
 // - *** приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
 
-// function zamina(a, i){
+function zamina(a, i){
     
-//     a[i] = i + 1;
-//     console.log(a);
-//     return a
+    a[i] = i + 1;
+    console.log(a);
+    console.log(i)
+    return a
 
-// }
-// zamina([15, 20, 25], 2)
+}
+zamina([15, 20, 25], 2)
 
 
 
@@ -240,19 +240,19 @@
 // - *** створити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.
 
 
-// function nullIndex(a){
-//     const len = a.length;
-//     for(let i = 0; i < len; i++){
-//         if(a[i] === 0){
-//             a.push(a[i]);
-//             a[i] = undefined;
+function nullIndex(a){
+    const len = a.length;
+    for(let i = 0; i < len; i++){
+        if(a[i] === 0){
+            a.push(a[i]);
+            a.splice(i, 1);
             
-//         }
-//     }
-//     console.log(a);
-//     return a
-// }
-// nullIndex([25, 0, 2, 5, 0, 87, 1])
+        }
+    }
+    console.log(a);
+    return a
+}
+nullIndex([25, 0, 2, 5, 0, 87, 1])
 
 // Двожина масиву від 2 до 100
 // Приклад
@@ -373,17 +373,17 @@ let cars = [{
 
 
 
-function carsBlock(cars, type){
-    let typE = document.createElement(type);
-    for(let i of cars){
-        let p = document.createElement("p");
-        p.innerText = i.model + " \n " + i.year + " \n " + i.power + " \n " + i.color;
+// function carsBlock(cars, type){
+//     let typE = document.createElement(type);
+//     for(let i of cars){
+//         let p = document.createElement("p");
+//         p.innerText = i.model + " \n " + i.year + " \n " + i.power + " \n " + i.color;
 
-        typE.appendChild(p);
-    }
-    document.body.appendChild(typE);
-}
-carsBlock(cars, "div")
+//         typE.appendChild(p);
+//     }
+//     document.body.appendChild(typE);
+// }
+// carsBlock(cars, "div")
 // - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
 // Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали.
 // Для кожної властивості створити всередені блока автомоблія свій блок
