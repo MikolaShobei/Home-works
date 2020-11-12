@@ -221,38 +221,34 @@
 // - *** приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
 
 function zamina(a, i){
-    
-    a[i] = i + 1;
-    console.log(a);
-    console.log(i)
+	
+	if(i > a.length) return `Введіть i не більше ${a.length - 1}`
+    let j = a[i]
+	a.splice(i,1,a[i +1])
+	a.splice(i + 1, 1, j)
     return a
 
 }
-zamina([15, 20, 25], 2)
-
-
-
-
-
+console.log(zamina([15, 20, 25, 65, 2, 8, 7, 66], 10))
 
 
 
 // - *** створити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.
 
 
-function nullIndex(a){
-    const len = a.length;
-    for(let i = 0; i < len; i++){
-        if(a[i] === 0){
-            a.push(a[i]);
-            a.splice(i, 1);
+// function nullIndex(a){
+//     const len = a.length;
+//     for(let i = 0; i < len; i++){
+//         if(a[i] === 0){
+//             a.push(a[i]);
+//             a.splice(i, 1);
             
-        }
-    }
-    console.log(a);
-    return a
-}
-nullIndex([25, 0, 2, 5, 0, 87, 1])
+//         }
+//     }
+//     console.log(a);
+//     return a
+// }
+// nullIndex([25, 0, 2, 5, 0, 87, 1])
 
 // Двожина масиву від 2 до 100
 // Приклад
