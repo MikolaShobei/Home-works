@@ -387,25 +387,132 @@
 
 
 
-function q (word){
-    function printer(elem){
+// function q (word){
+//     function printer(elem){
+//         return new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 resolve(elem)
+//             }, (Math.trunc(Math.random() * (10 - 0) + 0)) * 100) 
+//         })
+//     }
+//     let i = 0
+//     async function a() {
+//         if(i === word.length)return
+//         const el = await printer(word[i])
+//         document.write(el)
+//         document.write('<br>')
+//         i++
+//         a()
+//     }
+//     a()
+// }
+// q('Miyagi & Эндшпиль feat Симптом - Люби меня (Lyric Video) | YouTube Exclusive')
+
+
+// отсортировать с помощью setTimeout() массив  чисел [4,1,3,2,5] -> [1,2,3,4,5] (массив может быть любой длины)
+// условие: нельзя пользоваться методами массивов
+
+
+
+// function sorterFunc (arr){
+//     let arr2 =[]
+//     function sort(arr){
+//         return new Promise((resolve, reject) => {
+//             for (const iterator of arr) {
+//             setTimeout(() => {
+//                 // let min = arr[0]
+//                 arr2.push (iterator)
+//                 resolve(iterator)
+//             },iterator)
+//         }
+//         })
+//     }
+//     async function a() {
+//         if(arr2.length === arr.length)return
+//         const el = await sort(arr)
+//     }
+//     a()
+//     console.log(arr2)
+// }
+// sorterFunc([4,1,3,2,57,10,4,11,25])
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Знайти найбільший існуючий поліндром який може утворитися завдяки добутку двох простих пятизначних чисел.
+
+function greatestPolindrom(min, max) {
+    let prCh =[]
+    let i = min 
+    
+    function proste() {
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+                let flag = true
+                for(let j = 2; j < Math.trunc(i/2) + 1; j++){
+                    if(!(i % j))  flag = false
+                }
+                if(flag) resolve(i)
+                reject()
+            })
+        })    
+    }
+    async function prosteAsinc() {
+        try{
+            if (i > max)   return
+            const pr = await proste()
+            prCh.push(pr)
+            // console.log(pr)
+            i++
+            prosteAsinc()
+            
+        } catch(o){
+            i++
+            prosteAsinc()
+        }
+    }
+    prosteAsinc() 
+    console.log(prCh)
+    
+    prCh.reverse()
+    
+    function polindrom() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(elem)
-            }, (Math.trunc(Math.random() * (10 - 0) + 0)) * 100) 
+                let localArr = []
+                prCh.forEach(element => {
+                    let dob = prCh[k] * element
+                    if (dob.toString().split() === dob.toString().split().reverse()) {
+                        localArr.push(element)
+                        
+                    }
+
+                });
+                resolve(Math.max(...prCh))
+            })
         })
     }
-    let i = 0
-    async function a() {
-        if(i === word.length)return
-        const el = await printer(word[i])
-        document.write(el)
-        document.write('<br>')
-        i++
-        a()
+    let polMax = []
+    let k = 0
+    async function polindromAsinc() {
+        // debugger
+        if(k === prCh.length) return
+        const pol = await polindrom()
+        polMax.push(pol)
+        k++        
+        polindromAsinc()
+
+
     }
-    a()
+    polindromAsinc()
+
+    console.log(Math.max(...polMax))
+
+
+
+
+
 }
-q('Miyagi & Эндшпиль feat Симптом - Люби меня (Lyric Video) | YouTube Exclusive')
+greatestPolindrom(10, 1000)
+
+
 
 
