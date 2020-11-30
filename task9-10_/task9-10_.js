@@ -526,7 +526,7 @@ for( let i = min; i < max; i++){
         }
     }
     if(flag) prCh.push(i)
-
+ 
 }
 prCh.reverse()
 console.log(prCh)
