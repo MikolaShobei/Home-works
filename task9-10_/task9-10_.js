@@ -436,83 +436,114 @@
 // }
 // sorterFunc([4,1,3,2,57,10,4,11,25])
 
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 // Знайти найбільший існуючий поліндром який може утворитися завдяки добутку двох простих пятизначних чисел.
 
-function greatestPolindrom(min, max) {
-    let prCh =[]
-    let i = min 
-    
-    function proste() {
-        return new Promise((resolve, reject) => {
-        setTimeout(() => {
-                let flag = true
-                for(let j = 2; j < Math.trunc(i/2) + 1; j++){
-                    if(!(i % j))  flag = false
-                }
-                if(flag) resolve(i)
-                reject()
-            })
-        })    
-    }
-    async function prosteAsinc() {
-        try{
-            if (i > max)   return
-            const pr = await proste()
-            prCh.push(pr)
-            // console.log(pr)
-            i++
-            prosteAsinc()
+// function greatestPolindrom(min, max) {
+//     let prCh =[]
+//     let i = min 
+//     let k = 0
+
+//     function proste() {
+//         return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//                 let flag = true
+//                 for(let j = 2; j < Math.trunc(i/2) + 1; j++){
+//                     if(!(i % j))  flag = false
+//                 }
+//                 if(flag) resolve(i)
+//                 reject()
+//             })
+//         })    
+//     }
+//     async function prosteAsinc() {
+//         try{
+//             if (i > max)   return
+//             const pr = await proste()
+//             prCh.push(pr)
+//             // console.log(pr)
+//             i++
+//             prosteAsinc()
             
-        } catch(o){
-            i++
-            prosteAsinc()
+//         } catch(o){
+//             i++
+//             prosteAsinc()
+//         }
+//     }
+//     prosteAsinc() 
+//     console.log(prCh)
+
+//     prCh.reverse()
+
+//     function polindrom() {
+//         return new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 prCh.forEach(element => {
+//                     let dob = prCh[k] * element
+//                     if (dob.toString() === dob.toString().split('').reverse().join('')) {
+//                         resolve(dob)
+                        
+//                     }
+                    
+//                 });
+//             })
+//         })
+//     }
+//     let polMax = []
+//     async function polindromAsinc() {
+//         // debugger
+//         if(k === prCh.length) return
+//         const pol = await polindrom()
+//         polMax.push(pol)
+//         k++        
+//         polindromAsinc()
+
+
+//     }
+//     polindromAsinc()
+//     console.log(polMax)
+//     console.log(Math.max(...polMax))
+
+
+
+
+
+// }
+// greatestPolindrom(10, 1000)
+
+
+function greatestPol(min, max) {
+    
+let prCh =[]
+
+for( let i = min; i < max; i++){
+    
+    
+    let flag = true
+    for(let j = 2; j < i; j++){
+        if(!(i % j)) {
+            flag = false
         }
     }
-    prosteAsinc() 
-    console.log(prCh)
-    
-    prCh.reverse()
-    
-    function polindrom() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                let localArr = []
-                prCh.forEach(element => {
-                    let dob = prCh[k] * element
-                    if (dob.toString().split() === dob.toString().split().reverse()) {
-                        localArr.push(element)
-                        
-                    }
+    if(flag) prCh.push(i)
 
-                });
-                resolve(Math.max(...prCh))
-            })
-        })
+}
+prCh.reverse()
+console.log(prCh)
+let localArr = []
+for (let index = 0; index < prCh.length; index++) {
+    for (const iterator of prCh){
+        let dob = prCh[index] * iterator
+        if (dob.toString() === dob.toString().split('').reverse().join('')) {
+            localArr.push(dob)
+            break
+            
+        }
     }
-    let polMax = []
-    let k = 0
-    async function polindromAsinc() {
-        // debugger
-        if(k === prCh.length) return
-        const pol = await polindrom()
-        polMax.push(pol)
-        k++        
-        polindromAsinc()
-
-
-    }
-    polindromAsinc()
-
-    console.log(Math.max(...polMax))
-
-
-
+}
+console.log(localArr)
+console.log(Math.max(...localArr))
 
 
 }
-greatestPolindrom(10, 1000)
-
-
-
-
+greatestPol(10000, 100000)
